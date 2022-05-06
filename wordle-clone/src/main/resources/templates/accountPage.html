@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<title>Account</title>
+</head>
+<body>
+
+<div th:each="word: ${session.wordHistory}">
+<div th:switch="${word.getStatus()}">
+	<div th:case="W" class="card text-center" style="width: 10rem;">
+		 <div class="card-body">
+			<div style="background-color: green;" th:text="${word.getWord()}"></div>
+		</div>
+		<div class="card-text border">
+			<div th:text="${word.getStatus()}"></div>
+		</div>
+	</div>
+	
+	<div th:case="L" class="card text-center" style="width: 10rem;">
+		 <div class="card-body">
+			<div style="background-color: red;" th:text="${word.getWord()}"></div>
+		</div>
+		<div class="card-text border">
+			<div th:text="${word.getStatus()}"></div>
+		</div>
+	</div>
+	<div th:case="null" class="card text-center" style="width: 10rem;">
+		 <div class="card-body">
+			<div style="background-color: blue;" th:text="${word.getWord()}"></div>
+		</div>
+		<div class="card-text border">
+			<div th:text="${word.getStatus()}"></div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
