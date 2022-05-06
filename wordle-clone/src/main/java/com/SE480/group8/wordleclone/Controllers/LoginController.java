@@ -59,6 +59,8 @@ public class LoginController {
 		}
 		else {
 			System.out.println("Bad credentials");
+			session.setAttribute("badCredEmail", "Incorrect Email || !Exist");
+			session.setAttribute("badCredPass", "Incorrect Password");
 			return "redirect:/";
 		}
 		
